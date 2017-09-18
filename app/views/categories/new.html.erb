@@ -1,0 +1,12 @@
+<p>Создать категорию для проекта <%= @project.title %></p>
+<% if @parent_category[:title] != '' %>
+  <p>Подкатегория категории <%= @parent_category.title %></p>
+<% end %>
+<%= form_with scope: :category, url: project_category_categories_path(@project, @parent_category), local: true do |form| %>
+  <div class="form-group">
+    <%= form.label "Название" %>
+    <%= form.text_field :title, class: "form-control" %>
+    </br>
+    <%= form.submit "Создать", class: "btn btn-primary"%>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<p>
+  <div class="flex-container">
+    <div><%= category.title %></div>
+
+    <div>
+      <a href="<%= new_project_category_category_path(@project, category) %>">
+        <%= render :partial => 'icons/add_category.svg' %>
+      </a>
+      <a href="<%= new_project_category_article_path(@project, category) %>">
+        <%= render :partial => 'icons/add_article.svg' %>
+      </a>
+      <a href="<%= project_category_path(@project, category) %>" data-method="DELETE">
+        <%= render :partial => 'icons/delete.svg' %>
+      </a>
+    </div>
+  </div>
+</p>
+<ul class="list-group">
+  <% children.each do |child| %>
+    <li class="list-group-item"><%= render :partial => 'category_item', :locals => { :category => child, :children => child.children(child.id) } %></li>
+  <% end %>
+  <% category.articles.each do |article| %>
+    <li class="list-group-item">
+      <%= link_to article.title, project_category_article_path(@project, category, article) %>
+    </li>
+  <% end %>
+</ul>

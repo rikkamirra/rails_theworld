@@ -1,0 +1,10 @@
+<p>Создать статью для категории <%= @category.title %> проекта <%= @project.title %></p>
+<%= form_with scope: :article, url: project_category_articles_path(@project, @category), local: true do |form| %>
+  <div class="form-group">
+    <%= form.text_field :title, class: "form-control", placeholder: "Название" %>
+    </br>
+    <%= form.text_area :body, class: "form-control", placeholder: "Содержание" %>
+    </br>
+    <%= form.submit "Создать", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <%= link_to "TheWorld", root_path, class: "navbar-brand" %>
+  <%= link_to "Проекты", projects_path %>
+  <% if user_signed_in? %>
+      <span>Здравствуйте, <%= link_to current_user.email, persons_profile_path %></span>
+      <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
+  <% else %>
+      <%= link_to 'Войти', new_user_session_path %>
+      <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+  <% end %>
+</nav>

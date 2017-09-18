@@ -1,0 +1,8 @@
+<p><%= category.title %></p>
+<ul>
+  <% children.each do |child| %>
+    <%= render :partial => 'category_item', :locals => { :category => child, :children => child.children(child.id) } %>
+    ----
+    <%= link_to "+подкатегория", new_project_category_category_path(@project, child) %>
+  <% end %>
+</ul>

@@ -1,0 +1,10 @@
+<h3><%= @project.title %></h3>
+<p><%= @project.description %></p>
+<ul class="list-group">
+  <% @root_categories.each do |category| %>
+    <li class="list-group-item">
+      <%= render :partial => 'category_item', :locals => { :category => category, :children => category.children(category.id) } %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Добавить категорию", new_project_category_category_path(@project, 0) %>
